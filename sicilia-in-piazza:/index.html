@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sicilia in Piazza - Home</title>
+    
+    <style>
+        /* === STILI GLOBALI === */
+        :root {
+            --primary-color: #dfb15b; 
+            --bg-color: #f4f4f4;
+            --text-dark: #222;
+            --text-light: #666;
+            --white: #ffffff;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --container-max-width: 1200px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-family); }
+        body { background-color: var(--bg-color); color: var(--text-dark); }
+        
+        .container { position: relative; max-width: var(--container-max-width); margin: 0 auto; background-color: var(--white); box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+
+        /* HEADER */
+        .main-header { background-color: var(--primary-color); display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .menu-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-dark); }
+        .logo { font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .user-icon { font-size: 20px; }
+        
+        /* MENU FLUTTUANTE */
+        #mobile-menu { 
+            display: none; 
+            position: absolute; 
+            top: 58px; 
+            left: 0;
+            width: 100%; 
+            z-index: 1000; 
+            background-color: var(--primary-color); 
+            padding: 10px 20px; 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1); 
+        }
+        #mobile-menu.active { display: block; }
+        #mobile-menu ul { list-style: none; }
+        #mobile-menu ul li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        #mobile-menu ul li:last-child { border-bottom: none; }
+        #mobile-menu ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; display: block; }
+        
+        .btn { padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: bold; transition: all 0.3s ease; }
+
+        /* FOOTER */
+        .main-footer { background-color: var(--primary-color); padding: 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 20px; }
+        .footer-col h3 { font-size: 18px; font-weight: bold; }
+        .footer-col h4 { font-size: 12px; margin-bottom: 15px; font-weight: bold; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { text-decoration: none; color: var(--text-dark); font-size: 11px; }
+        .footer-col ul li a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) { .main-footer { grid-template-columns: 1fr 1fr; } }
+
+        /* === STILI SPECIFICI HOMEPAGE === */
+        .hero {
+            /* USA NOME: sfondo.jpg */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('cartella_immagini/sfondo.jpg');
+            background-size: cover; background-position: center; height: 400px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: var(--white); text-align: center; padding: 20px;
+        }
+        .hero h2 { font-size: 36px; margin-bottom: 20px; font-weight: 700; }
+        .hero-buttons { display: flex; gap: 15px; }
+        .btn-primary { background-color: var(--white); color: var(--text-dark); }
+        .btn-primary:hover { background-color: #eee; }
+        .btn-secondary { background-color: transparent; color: var(--white); border: 1px solid var(--white); }
+        .btn-secondary:hover { background-color: rgba(255,255,255,0.2); }
+
+        .section-padding { padding: 50px 40px; }
+        .section-header { margin-bottom: 30px; }
+        .section-header h2 { font-size: 24px; margin-bottom: 5px; }
+        .section-header p { font-size: 14px; color: var(--text-light); }
+
+        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .gallery-item { display: block; border-radius: 12px; overflow: hidden; transition: transform 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; border-radius: 12px; }
+
+        .partners-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { border: 1px solid #eaeaea; border-radius: 10px; padding: 20px; background: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .card-header img { width: 40px; height: 40px; border-radius: 5px; object-fit: cover; }
+        .card-header h4 { font-size: 14px; margin-bottom: 2px; }
+        .card-header span { font-size: 12px; color: var(--text-light); }
+        .card p { font-size: 13px; color: var(--text-dark); line-height: 1.5; }
+
+        @media (max-width: 768px) { .gallery-grid, .partners-cards { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="main-header">
+            <button id="menu-btn" class="menu-btn">&#9776;</button>
+            <div class="logo">Sicilia in Piazza</div>
+            <div class="user-icon">&#127760;</div>
+        </header>
+
+        <nav id="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="piazze.html">Le Piazze</a></li>
+                <li><a href="itinerari.html">Itinerari</a></li>
+                <li><a href="risorse.html">Risorse</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <h2>Il cuore pulsante della Sicilia</h2>
+            <div class="hero-buttons">
+                <a href="piazze.html" class="btn btn-primary">Scopri le piazze</a>
+                <a href="mappa.html" class="btn btn-secondary">Vedi la mappa</a>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="section-header">
+                <h2>Dai un'occhiata alle migliori piazze presenti in Sicilia</h2>
+                <p>Contatta il numero delle guide o scarica l'itinerario gratuito per ogni parco.</p>
+            </div>
+            
+           <div class="gallery-grid">
+                <a href="siracusa.html" class="gallery-item">
+                    <img src="cartella_immagini/siracusa.jpg" alt="Piazza Siracusa">
+                </a>
+                <a href="catania.html" class="gallery-item">
+                    <img src="cartella_immagini/catania.jpg" alt="Piazza Catania">
+                </a>
+                <a href="palermo-pretoria.html" class="gallery-item">
+                    <img src="cartella_immagini/palermo-pretoria.jpg" alt="Piazza Palermo">
+                </a>
+                <a href="taormina.html" class="gallery-item">
+                    <img src="cartella_immagini/taormina.jpg" alt="Piazza Taormina">
+                </a>
+            </div>
+        </section>
+
+        <section class="section-padding partners-section">
+            <div class="section-header">
+                <h2>I nostri Partner</h2>
+                <p>A little line about what's being said and who's saying it.</p>
+            </div>
+
+            <div class="partners-cards">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="cartella_immagini/logo-regione.jpg" alt="Regione Sicilia">
+                        <div>
+                            <h4>Regione Sicilia</h4>
+                            <span>Regione Sicilia & Co.</span>
+                        </div>
+                    </div>
+                    <p>Using this product felt like it transformed me completely.</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="cartella_immagini/logo-forestale.jpg" alt="Corpo Forestale">
+                        <div>
+                            <h4>Corpo Forestale</h4>
+                            <span>Corpo nazionale e della regione Sicilia guardia forestale</span>
+                        </div>
+                    </div>
+                    <p>Your expectations will fly sky high. I felt like I was soaring.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <div class="footer-col">
+                <h3>Sicilia in Piazza</h3>
+            </div>
+            <div class="footer-col">
+                <h4>Esplora</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="piazze.html">Tutte le piazze</a></li>
+                    <li><a href="mappa.html">Mappa interattiva</a></li>
+                    <li><a href="itinerari.html">Scarica gli itinerari</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Le piazze</h4>
+                <ul>
+                    <li><a href="#">Il Barocco del Val di Noto</a></li>
+                    <li><a href="#">I tesori di Palermo</a></li>
+                    <li><a href="#">La costa Orientale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Il Progetto</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Chi sono</a></li>
+                    <li><a href="#">Fonti storiche</a></li>
+                    <li><a href="#">Contattami</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Cookie policy</a></li>
+                    <li><a href="#">Termini di utilizzo</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

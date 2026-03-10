@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sicilia in Piazza - Le nostre piazze</title>
+    <style>
+        /* === STILI GLOBALI COMPATTATI === */
+        :root { --primary-color: #dfb15b; --bg-color: #f4f4f4; --text-dark: #222; --text-light: #666; --white: #ffffff; --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; --container-max-width: 1200px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-family); }
+        body { background-color: var(--bg-color); color: var(--text-dark); }
+        .container { position: relative; max-width: var(--container-max-width); margin: 0 auto; background-color: var(--white); box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .main-header { background-color: var(--primary-color); display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .menu-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-dark); }
+        .logo { font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .user-icon { font-size: 20px; }
+        #mobile-menu { display: none; position: absolute; top: 58px; left: 0; width: 100%; z-index: 1000; background-color: var(--primary-color); padding: 10px 20px; box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        #mobile-menu.active { display: block; }
+        #mobile-menu ul { list-style: none; }
+        #mobile-menu ul li { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        #mobile-menu ul li:last-child { border-bottom: none; }
+        #mobile-menu ul li a { text-decoration: none; color: var(--text-dark); font-weight: 500; display: block; }
+        .main-footer { background-color: var(--primary-color); padding: 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 20px; }
+        .footer-col h3 { font-size: 18px; font-weight: bold; }
+        .footer-col h4 { font-size: 12px; margin-bottom: 15px; font-weight: bold; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 8px; }
+        .footer-col ul li a { text-decoration: none; color: var(--text-dark); font-size: 11px; }
+        .footer-col ul li a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .main-footer { grid-template-columns: 1fr 1fr; } }
+        /* === STILI SPECIFICI GRIGLIA PIAZZE === */
+        .page-padding { padding: 50px 40px; }
+        .page-title { text-align: center; font-size: 36px; color: #111; margin-bottom: 50px; margin-top: 20px; }
+        .piazze-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
+        .piazza-card { background-color: var(--white); border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .piazza-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .piazza-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .piazza-card-content { padding: 25px; }
+        .piazza-card-content h3 { font-size: 18px; margin-bottom: 10px; color: var(--text-dark); }
+        .piazza-card-content p { font-size: 13px; line-height: 1.5; color: var(--text-light); margin-bottom: 20px; }
+        .call-to-action { display: inline-block; text-decoration: none; color: var(--text-dark); font-size: 13px; font-weight: bold; }
+        .call-to-action:hover { color: var(--primary-color); }
+        .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .testimonial-card { background-color: var(--white); border: 1px solid #eaeaea; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .testimonial-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .testimonial-header img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .testimonial-info h4 { font-size: 15px; margin-bottom: 2px; }
+        .testimonial-info span { font-size: 12px; color: var(--text-light); }
+        .testimonial-card p { font-size: 14px; font-style: italic; line-height: 1.6; color: var(--text-dark); }
+        @media (max-width: 992px) { .piazze-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .piazze-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .page-padding { padding: 30px 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <button id="menu-btn" class="menu-btn">&#9776;</button>
+            <div class="logo">Sicilia in Piazza</div>
+            <div class="user-icon">&#127760;</div>
+        </header>
+
+        <nav id="mobile-menu">
+            <ul><li><a href="index.html">Home</a></li><li><a href="piazze.html">Le Piazze</a></li><li><a href="itinerari.html">Itinerari</a></li><li><a href="risorse.html">Risorse</a></li></ul>
+        </nav>
+
+        <main class="page-padding">
+            <h1 class="page-title">Le nostre piazze</h1>
+            <div class="piazze-grid">
+                <div class="piazza-card"><img src="cartella_immagini/siracusa.jpg" alt="Piazza del Duomo, Siracusa"><div class="piazza-card-content"><h3>Piazza del Duomo, Siracusa</h3><p>Un capolavoro barocco in pietra chiara, dove sorge un magnifico Duomo nato inglobando le colonne di un antico tempio greco.</p><a href="siracusa.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/palermo-pretoria.jpg" alt="Piazza Pretoria, Palermo"><div class="piazza-card-content"><h3>Piazza Pretoria, Palermo</h3><p>Detta "Piazza della Vergogna", è dominata da una monumentale e scenografica fontana circondata da splendidi palazzi nobiliari storici.</p><a href="palermo-pretoria.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/catania.jpg" alt="Piazza del Duomo, Catania"><div class="piazza-card-content"><h3>Piazza del Duomo, Catania</h3><p>Il cuore vulcanico della città. Ospita la celebre Fontana dell'Elefante (il "Liotru") incorniciata dall'imponente Cattedrale di Sant'Agata.</p><a href="catania.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/taormina.jpg" alt="Piazza IX Aprile, Taormina"><div class="piazza-card-content"><h3>Piazza IX Aprile, Taormina</h3><p>L'elegante salotto della città: una suggestiva terrazza con pavimento a scacchiera che offre una vista impareggiabile sul Mar Ionio e sull'Etna.</p><a href="taormina.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/quattro-canti.jpg" alt="I Quattro Canti, Palermo"><div class="piazza-card-content"><h3>I Quattro Canti, Palermo</h3><p>Un crocevia ottagonale unico, decorato da facciate seicentesche che celebrano allegoricamente le stagioni, i re di Spagna e le sante.</p><a href="quattro-canti.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/noto.jpg" alt="Piazza del Municipio, Noto"><div class="piazza-card-content"><h3>Piazza del Municipio, Noto</h3><p>L'apice del Barocco siciliano, dove l'ampia scalinata della Cattedrale dialoga con le forme eleganti e dorate di Palazzo Ducezio.</p><a href="noto.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/ragusa.jpg" alt="Piazza Duomo, Ragusa Ibla"><div class="piazza-card-content"><h3>Piazza Duomo, Ragusa Ibla</h3><p>Simbolo di rinascita, questa piazza in leggera pendenza, orlata di palme, guida lo sguardo verso la magnifica facciata del San Giorgio.</p><a href="ragusa.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/cefalu.jpg" alt="Piazza del Duomo, Cefalù"><div class="piazza-card-content"><h3>Piazza del Duomo, Cefalù</h3><p>Ai piedi di un'alta rocca, questa intima piazza custodisce la severa bellezza dell'imponente Cattedrale normanna voluta da Ruggero II.</p><a href="cefalu.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+                
+                <div class="piazza-card"><img src="cartella_immagini/palermo-bellini.jpg" alt="Piazza Bellini, Palermo"><div class="piazza-card-content"><h3>Piazza Bellini, Palermo</h3><p>Un tuffo nella storia dove lo stile arabo-normanno trionfa tra le inconfondibili cupole rosse e gli sfarzosi mosaici bizantini.</p><a href="palermo-bellini.html" class="call-to-action">Scopri di più &rarr;</a></div></div>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card"><div class="testimonial-header"><img src="cartella_immagini/Image_12.jpg" alt="Giulia"><div class="testimonial-info"><h4>Giulia</h4><span>Travel Blogger</span></div></div><p>"Un viaggio indimenticabile. Perdersi tra i vicoli e sbucare all'improvviso in piazze come quella di Ortigia ci ha lasciato letteralmente senza fiato."</p></div>
+                <div class="testimonial-card"><div class="testimonial-header"><img src="cartella_immagini/Image_13.jpg" alt="Prof. Thomas Wright"><div class="testimonial-info"><h4>Prof. Thomas Wright</h4><span>Storico dell'Architettura</span></div></div><p>"Le piazze siciliane sono un palcoscenico a cielo aperto. La scenografia barocca del Val di Noto e la stratificazione arabo-normanna di Palermo non hanno eguali nel resto del mondo."</p></div>
+            </div>
+        </main>
+        
+        <footer class="main-footer">
+            <div class="footer-col"><h3>Sicilia in Piazza</h3></div><div class="footer-col"><h4>Esplora</h4><ul><li><a href="index.html">Home</a></li><li><a href="piazze.html">Tutte le piazze</a></li></ul></div><div class="footer-col"><h4>Le piazze</h4><ul><li><a href="#">Il Barocco del Val di Noto</a></li><li><a href="#">I tesori di Palermo</a></li></ul></div><div class="footer-col"><h4>Il Progetto</h4><ul><li><a href="#">Blog</a></li><li><a href="#">Chi sono</a></li></ul></div><div class="footer-col"><h4>Support</h4><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie policy</a></li></ul></div>
+        </footer>
+    </div>
+    <script> document.getElementById('menu-btn').addEventListener('click', function() { document.getElementById('mobile-menu').classList.toggle('active'); }); </script>
+</body>
+</html>

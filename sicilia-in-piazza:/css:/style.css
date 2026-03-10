@@ -1,0 +1,145 @@
+/* === 1. VARIABILI E STILI GLOBALI (L'Identità del Sito) === */
+:root {
+    --primary-color: #dfb15b; /* Giallo senape del sito */
+    --bg-color: #f4f4f4;
+    --text-dark: #222;
+    --text-light: #666;
+    --white: #ffffff;
+    --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --container-max-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+}
+
+/* Contenitore principale comune a tutte le pagine */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    background-color: var(--white);
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+/* === 2. HEADER COMUNE === */
+.main-header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.user-icon {
+    font-size: 20px;
+}
+
+/* === 3. MENU HAMBURGER (Stato Aperto) === */
+#mobile-menu {
+    display: none; /* Inizialmente nascosto */
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#mobile-menu.active {
+    display: block; /* Mostrato quando ha classe "active" */
+}
+
+#mobile-menu ul {
+    list-style: none;
+}
+
+#mobile-menu ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#mobile-menu ul li:last-child {
+    border-bottom: none;
+}
+
+#mobile-menu ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    display: block;
+}
+
+/* === 4. BOTTONI COMUNI === */
+.btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* === 5. FOOTER COMUNE === */
+.main-footer {
+    background-color: var(--primary-color);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.footer-col h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer-col h4 {
+    font-size: 12px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 11px;
+}
+
+.footer-col ul li a:hover {
+    text-decoration: underline;
+}
+
+/* === 6. RESPONSIVE PER HEADER, FOOTER, MENU === */
+@media (max-width: 768px) {
+    .main-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
